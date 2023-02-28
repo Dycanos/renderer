@@ -1,0 +1,12 @@
+/.vscode
+/affichage.o
+/face.o
+/main.exe
+/main.exe.stackdump
+/main.o
+/matrix.o
+/model.o
+/point.o
+/renderer.cpp
+/renderer.o
+/tgaimage.o
