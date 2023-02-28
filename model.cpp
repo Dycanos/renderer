@@ -2,9 +2,7 @@
 
 
 model::model(const char *filename,int height,int width) : v(), f() {
-
-        std::ifstream contenu;
-        
+        std::ifstream contenu;    
         contenu.open(filename,std::ifstream::in);
         if (contenu.fail())
         {
@@ -46,21 +44,20 @@ model::model(const char *filename,int height,int width) : v(), f() {
                     getline(isstream2, word2, ' ');
                     if (i ==0)
                     {      
-                            m1 = word2;
-                            isstream3.str(m1);
-                            while(getline(isstream3, m1, '/')){
-                                if (compteur == 0){
-                                    un = v.at(stoi(m1)-1);
-                                }
-                                    
-                                if (compteur == 1)
-                                    vt1 = vt.at(stoi(m1)-1);  
-                                compteur++;   
+                        m1 = word2;
+                        isstream3.str(m1);
+                        while(getline(isstream3, m1, '/')){
+                            if (compteur == 0){
+                                un = v.at(stoi(m1)-1);
                             }
-                            compteur=0;
+                                
+                            if (compteur == 1)
+                                vt1 = vt.at(stoi(m1)-1);  
+                            compteur++;   
+                        }
+                        compteur=0;
                     }
                     else if(i == 1){
-                       
                             m2 = word2;
                             isstream4.str(m2);
                             while(getline(isstream4, m2, '/')){
@@ -70,35 +67,25 @@ model::model(const char *filename,int height,int width) : v(), f() {
                                     vt2 = vt.at(stoi(m2)-1);
                                 compteur++;  
                             }
-                            compteur=0;
-                        
+                            compteur=0;  
                     }else if (i == 2)
-                  
                     {
-                            m3 = word2;
-                            isstream5.str(m3);
-                            while(getline(isstream5, m3, '/')){
-                                if (compteur == 0)
-                                    trois = v.at(stoi(m3)-1);
-                                if (compteur == 1)
-                                    vt3 = vt.at(stoi(m3)-1);
-                                compteur++;  
-                            }
-                            compteur=0;
-                            
-                            face fa = face(un,deux,trois,height,width,vt1,vt2,vt3);
-                            
-                            f.push_back(fa);
-                    }
-                    
-
-                    
-                   
-                 }
-                
-
-                
-                
+                        m3 = word2;
+                        isstream5.str(m3);
+                        while(getline(isstream5, m3, '/')){
+                            if (compteur == 0)
+                                trois = v.at(stoi(m3)-1);
+                            if (compteur == 1)
+                                vt3 = vt.at(stoi(m3)-1);
+                            compteur++;  
+                        }
+                        compteur=0;
+                        
+                        face fa = face(un,deux,trois,height,width,vt1,vt2,vt3);
+                        
+                        f.push_back(fa);
+                    }   
+                 }   
             }
             else if (ligne.compare(0,3,"vt ") == 0)
             { 
@@ -106,9 +93,7 @@ model::model(const char *filename,int height,int width) : v(), f() {
                 std::istringstream isstream;
                 std::string word;
                 isstream.str(ligne);
-                
                 getline(isstream, word, ' ');
-                
                 float x,y,z;
                 getline(isstream, word, ' ');
                 getline(isstream, word, ' ');
@@ -161,7 +146,6 @@ void model::dessineTriangle(point p1,point p2,point p3,TGAImage &image, TGAColor
         TGAColor couleur;
         TGAColor couleur_normal;
         int width = image.get_width();
-        int height = image.get_height();
         point bary;
 
     

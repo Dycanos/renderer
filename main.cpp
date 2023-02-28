@@ -14,11 +14,14 @@ int main(int argc, char** argv) {
     TGAImage image(height, width, TGAImage::RGB);
     TGAImage texture;
     texture.read_tga_file("ressources/african_head_diffuse.tga");
+    // Diablo 3 texture.read_tga_file("ressources/diablo3_pose_diffuse.tga");
     texture.flip_vertically();
     TGAImage normal;
     normal.read_tga_file("ressources/african_head_nm.tga");
+    // Diablo 3 normal.read_tga_file("ressources/diablo3_pose_nm.tga");
     normal.flip_vertically();
     model mod("african_head.obj",height,width);
+    //Diablo3 model mod("diablo3_pose.obj",height,width);
     
     affichage afficha("");
     float *zbuffer = new float[height*width];
